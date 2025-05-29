@@ -17,4 +17,5 @@
   editors = [
     "zed"
   ];
+  discord = "vesktop";
 }
