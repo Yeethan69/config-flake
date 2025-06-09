@@ -1,5 +1,5 @@
 {
-  description = "HQ Configs";
+  description = "Nix Configs";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
