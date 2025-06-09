@@ -1,7 +1,6 @@
 { pkgs, ... }:
 [
   pkgs.xfce.thunar
-  pkgs.nixfmt-rfc-style
   pkgs.pix
   pkgs.killall
   pkgs.jetbrains.jdk

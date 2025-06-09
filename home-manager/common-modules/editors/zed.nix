@@ -14,6 +14,7 @@
       extraPackages = [
         pkgs.nixd
         pkgs.nil
+        pkgs.nixfmt-rfc-style
       ];
 
       userSettings = {
