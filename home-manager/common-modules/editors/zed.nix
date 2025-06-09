@@ -39,6 +39,7 @@
           "liga" = true;
           "dlig" = true;
         };
+        tab_size = 2;
       };
     };
   };
