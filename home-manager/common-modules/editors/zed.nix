@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   vars,
   ...
@@ -9,28 +8,7 @@
     programs.zed-editor = {
       enable = true;
 
-      extensions = [ "nix" ];
-
-      extraPackages = [
-        pkgs.nixd
-        pkgs.nil
-        pkgs.nixfmt-rfc-style
-      ];
-
       userSettings = {
-        languages = {
-          Nix = {
-            language_servers = [
-              "nil"
-              "!nixd"
-            ];
-            formatter = {
-              external = {
-                command = "nixfmt";
-              };
-            };
-          };
-        };
         buffer_font_fallbacks = [
           "Font Awesome 6 Free"
           "Symbols Nerd Font Mono"
@@ -40,7 +18,6 @@
           "liga" = true;
           "dlig" = true;
         };
-        tab_size = 2;
       };
     };
   };

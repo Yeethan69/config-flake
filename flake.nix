@@ -17,6 +17,7 @@
     swww.url = "github:LGFae/swww";
     stylix.url = "github:nix-community/stylix/release-25.05";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nvf.url = "github:notashelf/nvf";
   };
 
   outputs =
