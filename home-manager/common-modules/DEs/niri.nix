@@ -24,7 +24,7 @@
   } else lib.mkIf (vars.DE.name == "niri") {
     home.file.".de" = {
       text = ''
-        DE=niri-session
+        export DE=niri-session
       '';
       executable = true;
     };
@@ -258,5 +258,4 @@
       };
     };
   };
-
 }
