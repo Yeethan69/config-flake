@@ -52,6 +52,7 @@ in
     layout = "us";
     variant = "";
   };
+  services.xserver.excludePackages = [ pkgs.xterm ];
 
   services.printing.enable = true;
   security.pam.services.swaylock = { };
