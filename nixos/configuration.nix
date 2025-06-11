@@ -44,8 +44,6 @@ in
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
