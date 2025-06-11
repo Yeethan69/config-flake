@@ -10,7 +10,7 @@
       startUserDEScript = pkgs.writeShellScriptBin "start-user-de" ''
         set -e # Exit on error
         source $HOME/.de
-        exec $DE > /dev/null
+        exec $DE
       '';
     in
     lib.mkIf (vars.greeter == "tuigreet") {
