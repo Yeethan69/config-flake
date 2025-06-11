@@ -12,10 +12,8 @@ in
     programs.spicetify = {
       windowManagerPatch = true;
       enabledCustomApps = with spicePkgs.apps; [
-        marketplace
         lyricsPlus
         betterLibrary
-        ncsVisualizer
       ];
       theme = spicePkgs.themes.blossom;
     };
