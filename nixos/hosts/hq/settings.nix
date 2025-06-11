@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  base16-theme = "${pkgs.base16-schemes}/share/themes/black-metal.yaml";
   theme-name = "black-metal";
   greeter = "tuigreet";
   plymouth = {

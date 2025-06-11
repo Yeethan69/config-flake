@@ -2,7 +2,6 @@
 {
   git-email = "46374629+Yeethan69@users.noreply.github.com";
   git-username = "Yeethan69";
-  base16-theme = "${pkgs.base16-schemes}/share/themes/black-metal.yaml";
   theme-name = "black-metal";
   DE = {
     name = "niri";

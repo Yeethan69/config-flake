@@ -13,7 +13,7 @@ in
   # Styling
   stylix = {
     enable = true;
-    base16Scheme = vars.base16-theme;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${vars.theme-name}.yaml";
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";

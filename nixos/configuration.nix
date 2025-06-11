@@ -60,7 +60,9 @@ in
   services.gnome.gnome-keyring.enable = true;
 
   stylix.enable = true;
-  stylix.base16Scheme = vars.base16-theme;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${vars.theme-name}.yaml";
+  
+  environment.shells = [ pkgs.zsh ];
 
   system.stateVersion = "25.05";
 }
