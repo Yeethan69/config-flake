@@ -13,9 +13,15 @@
       url = "github:Yeethan69/niri-flake-merged-prs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    prism.url = "github:IogaMaster/prism";
+    prism = {
+      url = "github:IogaMaster/prism";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     swww.url = "github:LGFae/swww";
-    stylix.url = "github:nix-community/stylix/release-25.05";
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nvf.url = "github:notashelf/nvf";
   };
