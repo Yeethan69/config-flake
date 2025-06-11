@@ -63,7 +63,7 @@
       };
       userNames = [
         "ethan"
-        # "abc"
+        "elsa"
       ];
       configPkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
@@ -90,7 +90,7 @@
           # [
           #  { user = "ethan"; hostName = "hq";         hostSpecificConfig = hosts.hq; }
           #  { user = "ethan"; hostName = "pathfinder"; hostSpecificConfig = hosts.pathfinder; }
-          #  { user = "abc";  hostName = "hq";         hostSpecificConfig = hosts.hq; }
+          #  { user = "elsa";  hostName = "hq";         hostSpecificConfig = hosts.hq; }
           # ...
           # ];
           homeConfigsToGenerate = nixpkgs.lib.concatMap (
