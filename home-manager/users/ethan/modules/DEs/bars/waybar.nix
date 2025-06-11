@@ -198,7 +198,7 @@
                 				*"Sleep")
                 		      systemctl sleep;;
                 		    *"Log out")
-                	  			swaymsg exit;;
+                	  			niri msg exit;;
                 	  		*"Reboot")
                 	  			systemctl reboot;;
                 	  		*"Reboot to UEFI")
