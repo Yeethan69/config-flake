@@ -19,4 +19,5 @@
     "neovim"
   ];
   discord = "vesktop";
+  browser = "firefox";
 }

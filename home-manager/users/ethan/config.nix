@@ -29,9 +29,6 @@ in
     colorscheme = vars.theme-name;
   };
 
-  # Browser
-  programs.firefox.enable = true;
-
   # Git
   programs.git = {
     enable = true;
