@@ -8,16 +8,20 @@
 }:
 {
 
-  imports =
-    if vars.DE.name == "niri" then
-      (with inputs; [
-        niri.homeModules.niri
-        niri.homeModules.stylix
-      ])
-    else
-      [ ];
+  imports = with inputs; [
+    niri.homeModules.niri
+    niri.homeModules.stylix
+  ];
 
-  config = lib.mkIf (vars.DE.name == "niri") {
+  config = if vars.DE.name != "niri" then {
+    # Still override the niri version if not selected to enable compilation of kdl
+    nixpkgs.overlays = [
+      inputs.niri.overlays.niri
+    ];
+    programs.niri = {
+      package = pkgs.niri-unstable;
+    };
+  } else lib.mkIf (vars.DE.name == "niri") {
     home.file.".de" = {
       text = ''
         DE=niri-session
