@@ -5,13 +5,9 @@
   ...
 }:
 {
-  imports =
-    if lib.elem "neovim" vars.editors then
-      (with inputs; [
-        nvf.homeManagerModules.default
-      ])
-    else
-      [ ];
+  imports = with inputs; [
+    nvf.homeManagerModules.default
+  ];
 
   config = lib.mkIf (lib.elem "neovim" vars.editors) {
     programs.nvf = {
