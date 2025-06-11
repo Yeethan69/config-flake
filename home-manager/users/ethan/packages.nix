@@ -11,4 +11,5 @@
   pkgs.pavucontrol
   pkgs.font-awesome
   pkgs.nerd-fonts.dejavu-sans-mono
+  pkgs.stremio
 ]
