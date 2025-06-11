@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   git-email = "46374629+Yeethan69@users.noreply.github.com";
   git-username = "Yeethan69";

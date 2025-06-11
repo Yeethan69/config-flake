@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   theme-name = "black-metal";
   greeter = "tuigreet";
