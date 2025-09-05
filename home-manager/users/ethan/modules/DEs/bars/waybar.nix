@@ -194,7 +194,7 @@
 
                       case $SELECTION in
                 	      *"Lock")
-                					swaylock;;
+                					swaylock --screenshots --effect-pixelate 15 --clock;;
                 				*"Sleep")
                 		      systemctl sleep;;
                 		    *"Log out")

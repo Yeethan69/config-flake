@@ -101,13 +101,13 @@
       events = [
         {
           event = "before-sleep";
-          command = "swaylock -f";
+          command = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --effect-pixelate 15 --clock -f";
         }
       ];
       timeouts = [
         {
           timeout = 300;
-          command = "swaylock -f";
+          command = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --effect-pixelate 15 --clock -f";
         }
         {
           timeout = 301;
@@ -117,6 +117,7 @@
     };
 
     programs.swaylock.enable = true;
+    programs.swaylock.package = pkgs.swaylock-effects;
 
     gtk = {
       enable = true;
