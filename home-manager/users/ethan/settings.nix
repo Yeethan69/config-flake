@@ -19,4 +19,6 @@
   ];
   discord = "vesktop";
   browser = "firefox";
+  VPN = "PIA";
+  steam.enable = true;
 }

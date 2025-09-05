@@ -29,7 +29,7 @@
           color: @base07;
         }
 
-        #mpris {
+        #mpris, #custom-pia {
           background-color: @base0B;
           color: @base00;
         }
@@ -52,6 +52,7 @@
             "mpd"
             "idle_inhibitor"
             "pulseaudio"
+            "custom/pia"
             "network"
             "power-profiles-daemon"
             "cpu"
@@ -138,6 +139,48 @@
               power-saver = "";
             };
           };
+          "custom/pia" =
+            let
+              monitor = pkgs.writeShellScriptBin "monitor" ''
+                #!${pkgs.stdenv.shell}
+
+                connected="󰌹 "
+                connecting="󱥸 "
+                disconnected="󰌺 "
+
+                if [[ $(pgrep -c "startpia") -gt 0 ]]; then
+                  if grep -q "The port is" /tmp/pia-run.log; then
+                    PORT=$(tail -n 7 /tmp/pia-run.log | grep "Forwarded port" | awk '{print $3}' | tail -n 1)
+                    echo "{\"text\":\"''${connected}''${PORT}\"}"
+                  else
+                    # We are in a connecting state, waiting for the port to be assigned.
+                    echo "{\"text\":\"''${connecting}\"}"
+                  fi
+                else
+                  # Interface does not exist, so we are disconnected.
+                  echo "{\"text\":\"''${disconnected}Connect\"}"
+                fi
+              '';
+              askpass = pkgs.writeShellScriptBin "askpass" ''
+                #!${pkgs.stdenv.shell}
+                ${pkgs.zenity}/bin/zenity --password --title="sudo password"
+              '';
+              toggle = pkgs.writeShellScriptBin "toggle" ''
+                #!${pkgs.stdenv.shell}
+                if [[ $(pgrep -c "startpia") -gt 0 ]]; then
+                  SUDO_ASKPASS="${askpass}/bin/askpass" sudo -A stoppia & disown
+                else
+                  SUDO_ASKPASS="${askpass}/bin/askpass" sudo -A startpia & disown
+                fi
+              '';
+            in
+            {
+              exec = "${monitor}/bin/monitor";
+              return-type = "json";
+              interval = 5;
+              on-click = "${toggle}/bin/toggle";
+              format = " {text} ";
+            };
           network = {
             format-wifi = "{essid} ({signalStrength}%)  ";
             format-ethernet = "{ipaddr}/{cidr}  ";
