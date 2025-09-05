@@ -198,7 +198,10 @@
 
             layer-rules = [
               {
-                matches = [ { namespace = "swww-daemon"; } ];
+                matches = [
+                  { namespace = "swww-daemon"; }
+                  { namespace = "linux-wallpaperengine"; }
+                ];
                 place-within-backdrop = true;
               }
             ];
@@ -211,6 +214,7 @@
                 { proportion = 1. / 2.; }
                 { proportion = 2. / 3.; }
               ];
+              always-center-single-column = true;
             };
 
             overview = {
@@ -263,6 +267,7 @@
               "Mod+F".action = maximize-column;
               "Mod+Shift+F".action = fullscreen-window;
               "Mod+C".action = center-column;
+              "Mod+Ctrl+C".action = center-visible-columns;
 
               "Mod+Minus".action = set-column-width "-10%";
               "Mod+Equal".action = set-column-width "+10%";
