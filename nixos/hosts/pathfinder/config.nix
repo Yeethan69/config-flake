@@ -1,3 +1,4 @@
+{ ... }:
 {
   swapDevices = [
     { device = "/swapfile"; }
