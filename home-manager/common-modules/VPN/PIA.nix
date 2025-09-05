@@ -6,9 +6,6 @@
   ...
 }:
 let
-  # The derivation itself. This is the core logic that fetches the repo
-  # and creates the wrapper script.
-
   source = pkgs.fetchFromGitHub {
     owner = "pia-foss";
     repo = "manual-connections";
@@ -41,22 +38,6 @@ let
     wg-quick down pia
     rm -f /tmp/pia-run.log
   '';
-
-  pia-package = pkgs.stdenv.mkDerivation {
-    # The name of the resulting package.
-    pname = "PIA";
-    version = "1.0";
-    src = source;
-
-    dontBuild = true;
-
-    installPhase = ''
-      # Create the directory for the binary.
-      mkdir -p $out/bin
-      cp ${start-script} $out/bin
-      cp ${stop-script} $out/bin
-    '';
-  };
 in
 {
   config = lib.mkIf (vars.VPN == "PIA") {
