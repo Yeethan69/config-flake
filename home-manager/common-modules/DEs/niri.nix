@@ -70,7 +70,7 @@
         Type = "oneshot";
         KillMode = "process";
         Environment = [ "DISPLAY=:0" ];
-        ExecStart = "${pkgs.waypaper}/bin/waypaper --random --monitor ${vars.display.name}";
+        ExecStart = "${pkgs.waypaper}/bin/waypaper --folder ${config.home.homeDirectory}/wallpapers --random --monitor ${vars.display.name}";
       };
     };
 
