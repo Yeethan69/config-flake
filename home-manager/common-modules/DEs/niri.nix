@@ -272,6 +272,8 @@
               "Mod+Shift+Slash".action = show-hotkey-overlay;
               "Mod+Q".action = close-window;
               "Mod+Shift+E".action = quit;
+              "XF86AudioRaiseVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -i 1'';
+              "XF86AudioLowerVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -d 1'';
             };
           };
         };
