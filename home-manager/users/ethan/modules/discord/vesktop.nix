@@ -1,7 +1,7 @@
 { lib, vars, ... }:
 {
   config = lib.mkIf (vars.discord == "vesktop") {
-    stylix.targets.vesktop.enable = false;
+    stylix.targets.vesktop.enable = true;
     programs.vesktop.vencord.settings = {
       plugins = {
         AlwaysAnimate.enabled = true;
@@ -33,7 +33,7 @@
           nearestNeighbour = false;
           square = false;
           zoom = 2;
-          size = 100;
+          size = 200;
           zoomSpeed = 0.5;
         };
         # LastFMRichPresence.enabled = true;
