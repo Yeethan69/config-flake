@@ -2,7 +2,7 @@
 {
   git-email = "46374629+Yeethan69@users.noreply.github.com";
   git-username = "Yeethan69";
-  theme-name = "black-metal";
+  theme-name = "darkviolet";
   DE = {
     name = "niri";
     waybar.enable = true;
