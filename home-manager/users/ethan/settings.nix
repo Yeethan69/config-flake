@@ -21,4 +21,5 @@
   browser = "firefox";
   VPN = "PIA";
   steam.enable = true;
+  gammashift.enable = true;
 }

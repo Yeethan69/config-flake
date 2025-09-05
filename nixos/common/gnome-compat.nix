@@ -24,7 +24,7 @@
 
   # location for night light, weather etc
   services.geoclue2.enable = true;
-  services.geoclue2.enableDemoAgent = false; # GNOME has its own geoclue agent
+  #services.geoclue2.enableDemoAgent = false; # GNOME has its own geoclue agent
 
   # authorise for these apps
   services.geoclue2.appConfig.gnome-datetime-panel = {
