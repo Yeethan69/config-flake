@@ -9,7 +9,7 @@ let
   extraCompatPaths = lib.makeSearchPathOutput "steamcompattool" "" extraCompatPackages;
 in
 {
-  config = lib.mkIf (vars.steam.enable == true) {
+  config = lib.mkIf (lib.hasAttr "steam" vars && vars.steam.enable == true) {
     fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [

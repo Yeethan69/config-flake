@@ -40,7 +40,7 @@ let
   '';
 in
 {
-  config = lib.mkIf (vars.VPN == "PIA") {
+  config = lib.mkIf (lib.hasAttr "VPN" vars && vars.VPN == "PIA") {
     home.packages = [
       pkgs.jq
       pkgs.wireguard-tools
