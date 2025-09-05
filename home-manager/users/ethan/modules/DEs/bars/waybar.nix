@@ -246,7 +246,7 @@
                 				*"Sleep")
                 		      systemctl sleep;;
                 		    *"Log out")
-                	  			niri msg exit;;
+                	  			niri msg action quit;;
                 	  		*"Reboot")
                 	  			systemctl reboot;;
                 	  		*"Reboot to UEFI")
