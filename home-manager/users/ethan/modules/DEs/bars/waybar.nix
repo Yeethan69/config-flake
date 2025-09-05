@@ -14,8 +14,13 @@
           border-radius: 15;
         }
 
-        window#waybar, tooltip {
-          background: alpha(@base00, 0.0);
+        .modules-center #window {
+          background-color: @base0B;
+          color: @base00;
+        }
+
+        window#waybar, tooltip, window#waybar.empty #window {
+          background: transparent;
           color: @base05;
         }
 
