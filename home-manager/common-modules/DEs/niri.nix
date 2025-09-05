@@ -123,6 +123,8 @@
         programs.swaylock.enable = true;
         programs.swaylock.package = pkgs.swaylock-effects;
 
+        services.polkit-gnome.enable = true;
+
         gtk = {
           enable = true;
           iconTheme.name = "Nordzy";
