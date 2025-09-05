@@ -8,9 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      #url = "github:sodiboo/niri-flake/main";
+      url = "github:sodiboo/niri-flake/main";
       #url = "git+file:/home/ethan/IdeaProjects/niri-flake";
-      url = "github:Yeethan69/niri-flake-merged-prs";
+      #url = "github:Yeethan69/niri-flake-merged-prs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prism = {
