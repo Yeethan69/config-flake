@@ -1,6 +1,7 @@
 { pkgs, ... }:
 [
   pkgs.xfce.thunar
+  pkgs.xfce.tumbler
   pkgs.pix
   pkgs.killall
   pkgs.jetbrains.jdk
