@@ -50,6 +50,25 @@
           };
         };
 
+        # CopyQ
+        systemd.user.services.copyq = {
+          Unit = {
+            Description = "CopyQ clipboard management daemon";
+            After = [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+          };
+          Service = {
+            Type = "simple";
+            ExecStart = "${pkgs.copyq}/bin/copyq";
+            Restart = "on-failure";
+            RestartSec = "5s";
+            Environment = "QT_QPA_PLATFORM=wayland";
+          };
+          Install = {
+            WantedBy = [ "graphical-session.target" ];
+          };
+        };
+
         # Waypaper
         systemd.user.timers.waypaper = {
           Unit = {
@@ -123,6 +142,7 @@
         programs.swaylock.enable = true;
         programs.swaylock.package = pkgs.swaylock-effects;
 
+        #Gui authentication
         services.polkit-gnome.enable = true;
 
         gtk = {
@@ -182,6 +202,7 @@
                 command = [ "systemctl --user restart xwayland-satellite.service" ];
               }
               { command = [ "systemctl --user restart waypaper.timer" ]; }
+              { command = [ "systemctl --user restart copyq.service" ]; }
             ];
 
             window-rules = [
@@ -193,6 +214,17 @@
                   top-right = 15.0;
                 };
                 clip-to-geometry = true;
+              }
+              {
+                # Volume Control
+                matches = [ { app-id = "com.github.hluk.copyq"; } ];
+                open-floating = true;
+                open-focused = true;
+                default-floating-position = {
+                  relative-to = "bottom";
+                  y = 16;
+                  x = 0;
+                };
               }
             ];
 
@@ -246,6 +278,7 @@
 
               "Mod+V".action = toggle-window-floating;
               "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
+              "Mod+Ctrl+V".action = spawn-sh ''${pkgs.copyq}/bin/copyq toggle'';
 
               "Mod+1".action = focus-workspace 1;
               "Mod+2".action = focus-workspace 2;
