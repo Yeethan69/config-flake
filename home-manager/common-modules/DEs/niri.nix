@@ -69,6 +69,24 @@
           };
         };
 
+        # inhibridge
+        systemd.user.services.inhibridge = {
+          Unit = {
+            Description = "Bridges freedesktop.org ScreenSaver inhibitions to systemd-inhibit";
+            After = [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+          };
+          Service = {
+            Type = "simple";
+            ExecStart = "${pkgs.inhibridge}/bin/inhibridge";
+            Restart = "on-failure";
+            RestartSec = "5s";
+          };
+          Install = {
+            WantedBy = [ "graphical-session.target" ];
+          };
+        };
+
         # Waypaper
         systemd.user.timers.waypaper = {
           Unit = {
