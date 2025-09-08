@@ -111,7 +111,12 @@
             home-manager.lib.homeManagerConfiguration {
               pkgs = configPkgs;
               extraSpecialArgs = {
-                inherit inputs outputs userName;
+                inherit
+                  inputs
+                  outputs
+                  userName
+                  hostName
+                  ;
                 vars = (import ./home-manager/users/${userName}/settings.nix) { pkgs = configPkgs; } // {
                   inherit (hostSpecificConfig) type display;
                 };

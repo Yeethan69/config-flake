@@ -18,10 +18,6 @@
           "liga" = true;
           "dlig" = true;
         };
-
-        terminal = {
-          font_family = "'Symbols Nerd Font Mono'";
-        };
       };
     };
   };

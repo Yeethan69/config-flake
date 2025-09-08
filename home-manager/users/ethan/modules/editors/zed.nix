@@ -2,6 +2,8 @@
   lib,
   vars,
   pkgs,
+  config,
+  hostName,
   ...
 }:
 {
@@ -20,12 +22,23 @@
         languages = {
           Nix = {
             language_servers = [
-              "nil"
-              "!nixd"
+              "!nil"
+              "nixd"
             ];
             formatter = {
               external = {
                 command = "nixfmt";
+              };
+            };
+          };
+        };
+        lsp = {
+          nixd = {
+            settings = {
+              options = {
+                home-manager = {
+                  expr = "(builtins.getFlake \"${config.home.homeDirectory}/nixos\").homeConfigurations.\"${config.home.username}@${hostName}\".options";
+                };
               };
             };
           };
