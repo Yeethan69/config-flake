@@ -11,7 +11,7 @@
       style = ''
         * {
           border: none;
-          border-radius: 15;
+          border-radius: 5;
         }
 
         .modules-center #window {
