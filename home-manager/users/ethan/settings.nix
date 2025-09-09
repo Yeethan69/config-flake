@@ -13,6 +13,9 @@
     "spicetify"
     "playerctl"
   ];
+  media = [
+    "kodi"
+  ];
   editors = [
     "zed"
     "neovim"
