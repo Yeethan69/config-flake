@@ -21,6 +21,8 @@ in
       gamescope
       mangohud
 
+      mangojuice
+
       (steam.override {
         extraEnv = {
           STEAM_EXTRA_COMPAT_TOOLS_PATHS = extraCompatPaths;
