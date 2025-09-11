@@ -47,7 +47,7 @@
           for pkg in "$@"; do
             args+="nixpkgs#$pkg"
           done
-          IN_NIX_SHELL=impure nix shell "''${args[@]}"
+          IN_NIX_SHELL=impure NIXPKGS_ALLOW_UNFREE=1 nix shell --impure "''${args[@]}"
         }
 
         # Get hashes for fetchers
