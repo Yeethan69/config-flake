@@ -110,7 +110,19 @@
             Type = "oneshot";
             KillMode = "process";
             Environment = [ "DISPLAY=:0" ];
-            ExecStart = "${pkgs.waypaper}/bin/waypaper --folder ${config.home.homeDirectory}/wallpapers --random --monitor ${vars.display.name}";
+            ExecStart =
+              let
+                waypaper = pkgs.waypaper.overrideAttrs (
+                  final: prev: {
+                    src = pkgs.fetchgit {
+                      url = "https://github.com/anufrievroman/waypaper";
+                      rev = "c8f5cac59094807706beba3750a446a66345e690";
+                      hash = "sha256-J1qFQGVumkFXyuw1KDg8OpsNn1ReiMC9/bvuLrsGXHg=";
+                    };
+                  }
+                );
+              in
+              "${waypaper}/bin/waypaper --folder ${config.home.homeDirectory}/wallpapers --random --monitor ${vars.display.name}";
           };
         };
 
