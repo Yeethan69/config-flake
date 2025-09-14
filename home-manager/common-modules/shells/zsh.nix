@@ -56,7 +56,7 @@
             echo "Usage: get-hash <url>"
             return 1
           fi
-          nix-prefetch-url "$1" | xargs nix hash convert --hash-algo sha256
+          nix-prefetch-url --unpack "$1" | xargs nix hash convert --hash-algo sha256
         }
       '';
     };
