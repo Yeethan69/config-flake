@@ -17,6 +17,7 @@ in
       source-han-sans
 
       protontricks
+      protonup-qt
 
       gamescope
       mangohud
