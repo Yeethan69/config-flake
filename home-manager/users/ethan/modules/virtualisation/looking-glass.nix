@@ -4,9 +4,8 @@
     programs.looking-glass-client = {
       settings = {
         win = {
-          fullScreen = true;
+          fullScreen = false;
           showFPS = true;
-          jitRender = true;
           fpsMin = 144;
         };
 
