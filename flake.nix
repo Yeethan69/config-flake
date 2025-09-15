@@ -75,7 +75,12 @@
             hostname:
             nixpkgs.lib.nixosSystem {
               specialArgs = {
-                inherit inputs outputs hostname;
+                inherit
+                  inputs
+                  outputs
+                  hostname
+                  userNames
+                  ;
                 vars = (import ./nixos/hosts/${hostname}/settings.nix) { pkgs = configPkgs; };
               };
               modules = [ ./nixos/configuration.nix ];
