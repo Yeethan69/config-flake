@@ -25,4 +25,8 @@
   VPN = "PIA";
   steam.enable = true;
   gammashift.enable = true;
+  virt = {
+    enable = true;
+    lg.enable = true;
+  };
 }
