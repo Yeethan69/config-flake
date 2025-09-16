@@ -28,5 +28,6 @@
   virt = {
     enable = true;
     lg.enable = true;
+    winapps.enable = true;
   };
 }
