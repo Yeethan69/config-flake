@@ -7,6 +7,11 @@
           fullScreen = false;
           showFPS = true;
           fpsMin = 144;
+          size = "2560x1440";
+        };
+
+        egl = {
+          scale = 1;
         };
 
         spice = {
