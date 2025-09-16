@@ -10,6 +10,7 @@
       "intel_iommu=on"
       "iommu=pt"
       "vfio-pci.ids=8086:3e98"
+      "snd_hda_core.gpu_bind=0"
     ];
 
     blacklistedKernelModules = [
