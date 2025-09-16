@@ -136,13 +136,14 @@
             actions = true;
             anchor = "top-right";
             border-radius = 15;
+            border-size = 4;
             default-timeout = 5000;
-            height = 100;
-            width = 300;
+            height = 300;
+            width = 600;
             icons = true;
             ignore-timeout = false;
             layer = "top";
-            margin = 10;
+            margin = 15;
             markup = true;
           };
         };
