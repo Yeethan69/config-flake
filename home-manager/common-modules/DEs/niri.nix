@@ -32,6 +32,10 @@
           executable = true;
         };
 
+        home.packages = [
+          pkgs.xfce.thunar
+        ];
+
         # Satellite
         systemd.user.services.xwayland-satellite = {
           Unit = {
@@ -350,5 +354,11 @@
             };
           };
         };
+        # make thunar open folders without overriding mimeapps.list (xdg.mimeapps.enable = true)
+        home.activation.set-thunar-for-folders = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          if [ $(${pkgs.xdg-utils}/bin/xdg-mime query default inode/directory) != thunar.desktop ]; then
+            run ${pkgs.xdg-utils}/bin/xdg-mime default org.gnome.Nautilus.desktop inode/directory
+          fi
+        '';
       };
 }

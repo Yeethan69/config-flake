@@ -1,6 +1,5 @@
 { pkgs, ... }:
 [
-  pkgs.xfce.thunar
   pkgs.xfce.tumbler
   pkgs.pix
   pkgs.killall
