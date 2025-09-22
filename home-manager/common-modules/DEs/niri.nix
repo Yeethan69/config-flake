@@ -219,11 +219,11 @@
               disable-primary = true;
             };
 
-            input.mouse = {
-              scroll-method = "on-button-down";
-              scroll-button = 274;
-              #  scroll-button-lock = true;
-            };
+            # input.mouse = {
+            #   scroll-method = "on-button-down";
+            #   scroll-button = 274;
+            #   #  scroll-button-lock = true;
+            # };
 
             prefer-no-csd = true;
             environment = {
