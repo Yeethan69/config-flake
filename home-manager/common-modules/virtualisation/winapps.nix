@@ -32,7 +32,7 @@
         # [WINDOWS PASSWORD]
         # NOTES:
         # - If using FreeRDP v3.9.0 or greater, you *have* to set a password
-        RDP_PASS="WinAppsPassword"
+        RDP_PASS="WinApps"
 
         # [WINDOWS DOMAIN]
         # DEFAULT VALUE: (BLANK)
@@ -52,7 +52,7 @@
         # - Only applicable when using 'libvirt'
         # - The libvirt VM name must match so that WinApps can determine VM IP, start the VM, etc.
         # DEFAULT VALUE: 'RDPWindows'
-        VM_NAME="win11"
+        VM_NAME="WinApps"
 
         # [WINAPPS BACKEND]
         # DEFAULT VALUE: 'docker'
