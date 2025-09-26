@@ -1,6 +1,6 @@
 { ... }:
 {
-  theme-name = "darkviolet";
+  theme-name = "irblack";
   greeter = "tuigreet";
   plymouth = {
     enable = true;
