@@ -247,15 +247,15 @@
             window-rules = [
               {
                 geometry-corner-radius = {
-                  bottom-left = 15.0;
-                  bottom-right = 15.0;
-                  top-left = 15.0;
-                  top-right = 15.0;
+                  bottom-left = 10.0;
+                  bottom-right = 10.0;
+                  top-left = 10.0;
+                  top-right = 10.0;
                 };
                 clip-to-geometry = true;
               }
               {
-                # Volume Control
+                # Copyq
                 matches = [ { app-id = "com.github.hluk.copyq"; } ];
                 open-floating = true;
                 open-focused = true;
@@ -263,6 +263,29 @@
                   relative-to = "bottom";
                   y = 16;
                   x = 0;
+                };
+              }
+              {
+                # Firefox PiP
+                matches = [ { title = "Picture-in-Picture"; } ];
+                open-floating = true;
+                open-focused = false;
+                default-floating-position = {
+                  relative-to = "bottom-right";
+                  x = 16;
+                  y = 16;
+                };
+              }
+              {
+                # Volume Control
+                matches = [ { app-id = "org.pulseaudio.pavucontrol"; } ];
+                open-floating = true;
+                open-focused = true;
+                min-width = 754;
+                default-floating-position = {
+                  relative-to = "top-right";
+                  x = 270;
+                  y = 16;
                 };
               }
             ];
@@ -278,6 +301,7 @@
             ];
 
             layout = {
+              border.width = 1;
               background-color = "transparent";
               preset-column-widths = [
                 { proportion = 1. / 4.; }
@@ -351,6 +375,15 @@
               "Mod+Shift+E".action = quit;
               "XF86AudioRaiseVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -i 1'';
               "XF86AudioLowerVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -d 1'';
+              "XF86AudioPlay".action = lib.mkIf (lib.elem "playerctl" vars.music) (
+                spawn-sh ''${pkgs.playerctl}/bin/playerctl play-pause''
+              );
+              "XF86AudioNext".action = lib.mkIf (lib.elem "playerctl" vars.music) (
+                spawn-sh ''${pkgs.playerctl}/bin/playerctl next''
+              );
+              "XF86AudioPrev".action = lib.mkIf (lib.elem "playerctl" vars.music) (
+                spawn-sh ''${pkgs.playerctl}/bin/playerctl previous''
+              );
             };
           };
         };
