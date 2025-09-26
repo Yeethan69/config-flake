@@ -58,9 +58,11 @@ in
   security.pam.services.swaylock = { };
   services.gnome.gnome-keyring.enable = true;
 
+  services.pcscd.enable = true;
+
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${vars.theme-name}.yaml";
-  
+
   environment.shells = [ pkgs.zsh ];
 
   system.stateVersion = "25.05";
