@@ -32,9 +32,16 @@
           executable = true;
         };
 
-        home.packages = [
-          pkgs.xfce.thunar
-        ];
+        home.packages =
+          let
+            thunar = pkgs.xfce.thunar.override {
+              thunarPlugins = [ pkgs.xfce.thunar-archive-plugin ];
+            };
+          in
+          [
+            thunar
+            pkgs.xarchiver
+          ];
 
         # Satellite
         systemd.user.services.xwayland-satellite = {
