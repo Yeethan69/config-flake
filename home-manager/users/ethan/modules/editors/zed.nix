@@ -44,6 +44,9 @@
           };
         };
         tab_size = 2;
+        features = {
+          edit_prediction_provider = "copilot";
+        };
       };
     };
   };
