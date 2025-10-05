@@ -233,6 +233,7 @@
             environment = {
               DISPLAY = ":0";
               NIXOS_OZONE_WL = "1";
+              SDL_VIDEO_ALLOW_SCREENSAVER = "1";
             };
 
             spawn-at-startup = [
