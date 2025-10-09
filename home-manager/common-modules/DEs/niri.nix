@@ -127,8 +127,8 @@
                   final: prev: {
                     src = pkgs.fetchgit {
                       url = "https://github.com/anufrievroman/waypaper";
-                      rev = "c8f5cac59094807706beba3750a446a66345e690";
-                      hash = "sha256-J1qFQGVumkFXyuw1KDg8OpsNn1ReiMC9/bvuLrsGXHg=";
+                      rev = "fbe2df22624f9c679589ad9759dbed53634c4379";
+                      hash = "sha256-5Sl7s/YtBpLu7SCuomIU5kJ+L3EDgI8H5LDrgwesEG0=";
                     };
                   }
                 );
