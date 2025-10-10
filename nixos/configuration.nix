@@ -58,6 +58,9 @@ in
   security.pam.services.swaylock = { };
   services.gnome.gnome-keyring.enable = true;
 
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
   services.pcscd.enable = true;
 
   stylix.enable = true;
