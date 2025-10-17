@@ -1,12 +1,14 @@
 {
   lib,
   vars,
+  pkgs-unstable,
   ...
 }:
 {
   config = lib.mkIf (lib.elem "zed" vars.editors) {
     programs.zed-editor = {
       enable = true;
+      package = pkgs-unstable.zed-editor;
 
       userSettings = {
         buffer_font_fallbacks = [
