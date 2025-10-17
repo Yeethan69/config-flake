@@ -337,6 +337,11 @@
               workspace-shadow.enable = false;
             };
 
+            hotkey-overlay = {
+              skip-at-startup = true;
+              hide-not-bound = true;
+            };
+
             binds = with config.lib.niri.actions; {
               "Mod+D".action = spawn "fuzzel";
               "Mod+T".action = spawn "${vars.terminal}";
