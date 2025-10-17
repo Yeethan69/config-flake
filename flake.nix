@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prism = {
-      url = "github:IogaMaster/prism";
+      url = "github:IogaMaster/prism?rev=3822346485a01fefb27f12d9f397c890b599ff7e";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     swww.url = "github:LGFae/swww";
