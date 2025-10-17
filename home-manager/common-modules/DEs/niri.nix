@@ -204,8 +204,10 @@
 
         gtk = {
           enable = true;
-          iconTheme.name = "Nordzy";
-          iconTheme.package = pkgs.nordzy-icon-theme;
+          iconTheme.name = "Fluent-purple-dark";
+          iconTheme.package = pkgs.fluent-icon-theme.override {
+            colorVariants = [ "purple" ];
+          };
         };
 
         xdg.portal = {
