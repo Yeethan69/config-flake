@@ -189,7 +189,21 @@
         programs.swaylock.package = pkgs.swaylock-effects;
 
         #Gui authentication
-        services.polkit-gnome.enable = true;
+        systemd.user.services.polkit-gnome = {
+          Unit = {
+            Description = "GNOME PolicyKit Agent";
+            After = [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+          };
+          Service = {
+            ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+            Restart = "on-failure";
+            RestartSec = "5s";
+          };
+          Install = {
+            WantedBy = [ "graphical-session.target" ];
+          };
+        };
 
         gtk = {
           enable = true;
