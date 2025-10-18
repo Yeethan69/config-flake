@@ -32,12 +32,11 @@
           executable = true;
         };
 
-        home.packages = with pkgs; [
-          xfce.thunar.override
-          {
+        home.packages = [
+          (pkgs.xfce.thunar.override {
             thunarPlugins = [ pkgs.xfce.thunar-archive-plugin ];
-          }
-          xarchiver
+          })
+          pkgs.xarchiver
         ];
 
         # Satellite
