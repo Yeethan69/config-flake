@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf (lib.hasAttr "waybar" vars.DE && vars.DE.waybar.enable == true) {
+  config = lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") {
     programs.waybar = {
       enable = true;
       systemd.enable = true;

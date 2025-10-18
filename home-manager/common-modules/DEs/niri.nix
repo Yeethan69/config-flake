@@ -262,7 +262,7 @@
               { command = [ "systemctl --user restart waypaper.timer" ]; }
               { command = [ "systemctl --user restart copyq.service" ]; }
             ]
-            ++ lib.optional (lib.getAttrFromPath [ "DE" "waybar" "enable" ] vars) {
+            ++ lib.optional (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") {
               command = [ "systemctl --user restart waybar.service" ];
             };
 
@@ -385,7 +385,7 @@
 
               "Mod+Space".action = toggle-overview;
 
-              "Mod+W".action = lib.mkIf (lib.getAttrFromPath [ "DE" "waybar" "enable" ] vars) (
+              "Mod+W".action = lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") (
                 spawn-sh ''pkill -SIGUSR1 waybar''
               );
               "Mod+R".action = switch-preset-column-width;
