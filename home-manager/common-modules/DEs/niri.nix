@@ -256,13 +256,15 @@
             };
 
             spawn-at-startup = [
-              { command = [ "systemctl --user restart waybar.service" ]; }
               {
                 command = [ "systemctl --user restart xwayland-satellite.service" ];
               }
               { command = [ "systemctl --user restart waypaper.timer" ]; }
               { command = [ "systemctl --user restart copyq.service" ]; }
-            ];
+            ]
+            ++ lib.optional (lib.getAttrFromPath [ "DE" "waybar" "enable" ] vars) {
+              command = [ "systemctl --user restart waybar.service" ];
+            };
 
             window-rules = [
               {
@@ -383,7 +385,9 @@
 
               "Mod+Space".action = toggle-overview;
 
-              "Mod+W".action = spawn-sh ''pkill -SIGUSR1 waybar'';
+              "Mod+W".action = lib.mkIf (lib.getAttrFromPath [ "DE" "waybar" "enable" ] vars) (
+                spawn-sh ''pkill -SIGUSR1 waybar''
+              );
               "Mod+R".action = switch-preset-column-width;
               "Mod+F".action = maximize-column;
               "Mod+Shift+F".action = fullscreen-window;
