@@ -275,5 +275,7 @@
     stylix.targets.waybar.enableCenterBackColors = true;
     stylix.targets.waybar.enableLeftBackColors = true;
     stylix.targets.waybar.enableRightBackColors = true;
+
+    systemd.user.services.cliphist = lib.mkForce { };
   };
 }

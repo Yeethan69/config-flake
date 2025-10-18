@@ -57,7 +57,7 @@
           };
         };
 
-        # CopyQ
+        # CopyQ (waybar)
         systemd.user.services.copyq = {
           Unit = {
             Description = "CopyQ clipboard management daemon";
@@ -70,6 +70,24 @@
             Restart = "on-failure";
             RestartSec = "5s";
             Environment = "QT_QPA_PLATFORM=wayland";
+          };
+          Install = {
+            WantedBy = [ "graphical-session.target" ];
+          };
+        };
+
+        # Cliphist (dms)
+        systemd.user.services.cliphist = {
+          Unit = {
+            Description = "cliphist and wl-paste clipboard management";
+            After = [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+          };
+          Service = {
+            Type = "simple";
+            ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
+            Restart = "on-failure";
+            RestartSec = "5s";
           };
           Install = {
             WantedBy = [ "graphical-session.target" ];
@@ -260,11 +278,16 @@
                 command = [ "systemctl --user restart xwayland-satellite.service" ];
               }
               { command = [ "systemctl --user restart waypaper.timer" ]; }
+            ]
+            ++ lib.optionals (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") [
+              {
+                command = [ "systemctl --user restart waybar.service" ];
+              }
               { command = [ "systemctl --user restart copyq.service" ]; }
             ]
-            ++ lib.optional (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") {
-              command = [ "systemctl --user restart waybar.service" ];
-            };
+            ++ lib.optionals (lib.attrByPath [ "DE" "bar" ] null vars == "dms") [
+              { command = [ "systemctl --user restart cliphist.service" ]; }
+            ];
 
             window-rules = [
               {
@@ -343,77 +366,84 @@
               hide-not-bound = true;
             };
 
-            binds = with config.lib.niri.actions; {
-              "Mod+D".action = spawn "fuzzel";
-              "Mod+T".action = spawn "${vars.terminal}";
+            binds =
+              with config.lib.niri.actions;
+              lib.mkMerge [
+                {
+                  "Mod+T".action = spawn "${vars.terminal}";
 
-              "Mod+Left".action = focus-column-left;
-              "Mod+Down".action = focus-window-down;
-              "Mod+Up".action = focus-window-up;
-              "Mod+Right".action = focus-column-right;
+                  "Mod+Left".action = focus-column-left;
+                  "Mod+Down".action = focus-window-down;
+                  "Mod+Up".action = focus-window-up;
+                  "Mod+Right".action = focus-column-right;
 
-              "Mod+Ctrl+Left".action = move-column-left;
-              "Mod+Ctrl+Down".action = move-window-down;
-              "Mod+Ctrl+Up".action = move-window-up;
-              "Mod+Ctrl+Right".action = move-column-right;
+                  "Mod+Ctrl+Left".action = move-column-left;
+                  "Mod+Ctrl+Down".action = move-window-down;
+                  "Mod+Ctrl+Up".action = move-window-up;
+                  "Mod+Ctrl+Right".action = move-column-right;
 
-              "Mod+Page_Down".action = focus-workspace-down;
-              "Mod+Page_Up".action = focus-workspace-up;
+                  "Mod+Page_Down".action = focus-workspace-down;
+                  "Mod+Page_Up".action = focus-workspace-up;
 
-              "Mod+Ctrl+Page_Down".action = move-column-to-workspace-down;
-              "Mod+Ctrl+Page_Up".action = move-column-to-workspace-up;
+                  "Mod+Ctrl+Page_Down".action = move-column-to-workspace-down;
+                  "Mod+Ctrl+Page_Up".action = move-column-to-workspace-up;
 
-              "Mod+Shift+Page_Down".action = move-workspace-down;
-              "Mod+Shift+Page_Up".action = move-workspace-up;
+                  "Mod+Shift+Page_Down".action = move-workspace-down;
+                  "Mod+Shift+Page_Up".action = move-workspace-up;
 
-              "Mod+V".action = toggle-window-floating;
-              "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
-              "Mod+Ctrl+V".action = spawn-sh ''${pkgs.copyq}/bin/copyq toggle'';
+                  "Mod+V".action = toggle-window-floating;
+                  "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
-              "Mod+1".action = focus-workspace 1;
-              "Mod+2".action = focus-workspace 2;
-              "Mod+3".action = focus-workspace 3;
-              "Mod+4".action = focus-workspace 4;
-              "Mod+5".action = focus-workspace 5;
-              "Mod+6".action = focus-workspace 6;
-              "Mod+7".action = focus-workspace 7;
-              "Mod+8".action = focus-workspace 8;
-              "Mod+9".action = focus-workspace 9;
+                  "Mod+1".action = focus-workspace 1;
+                  "Mod+2".action = focus-workspace 2;
+                  "Mod+3".action = focus-workspace 3;
+                  "Mod+4".action = focus-workspace 4;
+                  "Mod+5".action = focus-workspace 5;
+                  "Mod+6".action = focus-workspace 6;
+                  "Mod+7".action = focus-workspace 7;
+                  "Mod+8".action = focus-workspace 8;
+                  "Mod+9".action = focus-workspace 9;
 
-              "Mod+Comma".action = consume-or-expel-window-left;
-              "Mod+Period".action = consume-or-expel-window-right;
+                  "Mod+Comma".action = consume-or-expel-window-left;
+                  "Mod+Period".action = consume-or-expel-window-right;
 
-              "Mod+Space".action = toggle-overview;
+                  "Mod+Space".action = toggle-overview;
+                  "Mod+R".action = switch-preset-column-width;
+                  "Mod+F".action = maximize-column;
+                  "Mod+Shift+F".action = fullscreen-window;
+                  "Mod+C".action = center-column;
+                  "Mod+Ctrl+C".action = center-visible-columns;
 
-              "Mod+W".action = lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") (
-                spawn-sh ''pkill -SIGUSR1 waybar''
-              );
-              "Mod+R".action = switch-preset-column-width;
-              "Mod+F".action = maximize-column;
-              "Mod+Shift+F".action = fullscreen-window;
-              "Mod+C".action = center-column;
-              "Mod+Ctrl+C".action = center-visible-columns;
+                  "Mod+Minus".action = set-column-width "-10%";
+                  "Mod+Equal".action = set-column-width "+10%";
 
-              "Mod+Minus".action = set-column-width "-10%";
-              "Mod+Equal".action = set-column-width "+10%";
+                  "Print".action = screenshot;
 
-              "Print".action = screenshot;
-
-              "Mod+Shift+Slash".action = show-hotkey-overlay;
-              "Mod+Q".action = close-window;
-              "Mod+Shift+E".action = quit;
-              "XF86AudioRaiseVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -i 1'';
-              "XF86AudioLowerVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -d 1'';
-              "XF86AudioPlay".action = lib.mkIf (lib.elem "playerctl" vars.music) (
-                spawn-sh ''${pkgs.playerctl}/bin/playerctl play-pause''
-              );
-              "XF86AudioNext".action = lib.mkIf (lib.elem "playerctl" vars.music) (
-                spawn-sh ''${pkgs.playerctl}/bin/playerctl next''
-              );
-              "XF86AudioPrev".action = lib.mkIf (lib.elem "playerctl" vars.music) (
-                spawn-sh ''${pkgs.playerctl}/bin/playerctl previous''
-              );
-            };
+                  "Mod+Shift+Slash".action = show-hotkey-overlay;
+                  "Mod+Q".action = close-window;
+                  "Mod+Shift+E".action = quit;
+                  "XF86AudioRaiseVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -i 1'';
+                  "XF86AudioLowerVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -d 1'';
+                  "XF86AudioPlay".action = lib.mkIf (lib.elem "playerctl" vars.music) (
+                    spawn-sh ''${pkgs.playerctl}/bin/playerctl play-pause''
+                  );
+                  "XF86AudioNext".action = lib.mkIf (lib.elem "playerctl" vars.music) (
+                    spawn-sh ''${pkgs.playerctl}/bin/playerctl next''
+                  );
+                  "XF86AudioPrev".action = lib.mkIf (lib.elem "playerctl" vars.music) (
+                    spawn-sh ''${pkgs.playerctl}/bin/playerctl previous''
+                  );
+                }
+                (lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") {
+                  "Mod+W".action = spawn-sh ''pkill -SIGUSR1 waybar'';
+                  "Mod+D".action = spawn "fuzzel";
+                  "Mod+Ctrl+V".action = spawn-sh ''${pkgs.copyq}/bin/copyq toggle'';
+                })
+                (lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "dms") {
+                  "Mod+D".action = spawn-sh ''dms ipc spotlight toggle'';
+                  "Mod+Ctrl+V".action = spawn-sh ''dms ipc clipboard toggle'';
+                })
+              ];
           };
         };
         # make thunar open folders without overriding mimeapps.list (xdg.mimeapps.enable = true)
