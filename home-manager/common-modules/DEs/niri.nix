@@ -417,7 +417,8 @@
                   "Mod+Minus".action = set-column-width "-10%";
                   "Mod+Equal".action = set-column-width "+10%";
 
-                  "Print".action = screenshot;
+                  "Print".action.screenshot = [ ];
+                  "Mod+Shift+S".action.screenshot = [ ];
 
                   "Mod+Shift+Slash".action = show-hotkey-overlay;
                   "Mod+Q".action = close-window;
