@@ -5,7 +5,7 @@
   theme-name = "irblack";
   DE = {
     name = "niri";
-    bar = "dms";
+    bar = "waybar";
   };
   shell = "zsh";
   terminal = "kitty";
