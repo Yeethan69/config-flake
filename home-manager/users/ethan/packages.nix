@@ -15,4 +15,5 @@
   pkgs.unrar
   pkgs.unzip
   pkgs.p7zip
+  pkgs.thunderbird
 ]
