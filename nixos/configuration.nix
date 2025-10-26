@@ -17,6 +17,7 @@ in
     with inputs;
     [
       stylix.nixosModules.stylix
+      nur.modules.nixos.default
       ./hosts/${hostname}/hardware-configuration.nix
     ]
     ++ lib.optionals (builtins.pathExists ./hosts/${hostname}/config.nix) [
