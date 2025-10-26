@@ -37,4 +37,7 @@
   services.udev.extraRules = ''
     KERNEL=="kvmfr0", SUBSYSTEM=="kvmfr", GROUP="kvm", MODE="0660"
   '';
+
+  virtualisation.waydroid.enable = true;
+  environment.systemPackages = [ pkgs.nur.repos.ataraxiasjel.waydroid-script ];
 }
