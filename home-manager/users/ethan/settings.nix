@@ -23,7 +23,6 @@
   discord = "vesktop";
   browser = "firefox";
   VPN = "PIA";
-  steam.enable = true;
   gammashift.enable = true;
   virt = {
     enable = true;
@@ -42,7 +41,7 @@
           "xdg-run/discord-ipc-0"
         ];
         devices = [
-          "inputR"
+          "input"
         ];
       };
     };
