@@ -774,6 +774,7 @@
         "nvf": "nvf",
         "prism": "prism",
         "quickshell": "quickshell",
+        "sls-steam": "sls-steam",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "swww": "swww",
@@ -798,6 +799,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sls-steam": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760958259,
+        "narHash": "sha256-O8/qAgFoBG2GbCgxoolN+PWtHmVH1hNqa8X3ZaY4Sv0=",
+        "owner": "AceSLS",
+        "repo": "SLSsteam",
+        "rev": "fa7905cf0174ed4be32b3550e73327a5722fcb60",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AceSLS",
+        "repo": "SLSsteam",
         "type": "github"
       }
     },

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   programs.gamemode.enable = true;
   boot.kernelParams = [
@@ -6,6 +6,11 @@
   ];
   programs.steam = {
     enable = true;
+    package = pkgs.steam.override {
+      extraEnv = {
+        LD_AUDIT = "${inputs.sls-steam.packages.${pkgs.system}.sls-steam}/SLSsteam.so";
+      };
+    };
     extest.enable = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
