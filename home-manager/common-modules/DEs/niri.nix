@@ -28,6 +28,7 @@
         home.file.".de" = {
           text = ''
             export DE=niri-session
+            export XDG_CURRENT_DESKTOP=X-Generic
           '';
           executable = true;
         };
