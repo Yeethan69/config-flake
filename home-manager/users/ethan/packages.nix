@@ -16,4 +16,5 @@
   pkgs.unzip
   pkgs.p7zip
   pkgs.thunderbird
+  pkgs.legendary-heroic
 ]
