@@ -8,7 +8,7 @@
     enable = true;
     package = pkgs.steam.override {
       extraEnv = {
-        LD_AUDIT = "${inputs.sls-steam.packages.${pkgs.system}.sls-steam}/SLSsteam.so";
+        LD_AUDIT = "${inputs.sls-steam.packages.${pkgs.stdenv.hostPlatform.system}.sls-steam}/SLSsteam.so";
       };
     };
     extest.enable = true;
@@ -16,7 +16,7 @@
       proton-ge-bin
     ];
     fontPackages = with pkgs; [
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       source-han-sans
     ];
     protontricks.enable = true;

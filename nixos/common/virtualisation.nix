@@ -23,10 +23,6 @@
             "/dev/kvmfr0"
         ]
       '';
-      ovmf = {
-        enable = true;
-        packages = [ pkgs.OVMFFull.fd ];
-      };
     };
   };
 

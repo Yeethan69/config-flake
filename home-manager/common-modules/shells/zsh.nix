@@ -2,6 +2,7 @@
   pkgs,
   lib,
   vars,
+  config,
   ...
 }:
 {
@@ -17,11 +18,10 @@
         enable = true;
         plugins = [
           "git"
-          "thefuck"
         ];
       };
 
-      dotDir = ".config/zsh";
+      dotDir = "${config.home.homeDirectory}/.config/zsh";
 
       initContent = ''
         # Powerlevel10k Zsh theme
@@ -60,7 +60,5 @@
         }
       '';
     };
-
-    programs.thefuck.enable = true;
   };
 }

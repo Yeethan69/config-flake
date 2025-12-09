@@ -19,7 +19,7 @@
         settings = {
           default_session =
             let
-              tuigreet = "${lib.getExe pkgs.greetd.tuigreet}";
+              tuigreet = "${lib.getExe pkgs.tuigreet}";
               tuigreetOptions = [
                 "--cmd ${startUserDEScript}/bin/start-user-de"
               ];

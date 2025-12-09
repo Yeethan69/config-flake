@@ -32,8 +32,12 @@ in
   # Git
   programs.git = {
     enable = true;
-    userName = vars.git-username;
-    userEmail = vars.git-email;
+    settings = {
+      user = {
+        name = vars.git-username;
+        email = vars.git-email;
+      };
+    };
   };
 
   # General
