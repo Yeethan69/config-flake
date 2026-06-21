@@ -14,7 +14,7 @@
       extraPackages = [
         pkgs.nixd
         pkgs.nil
-        pkgs.nixfmt-rfc-style
+        pkgs.nixfmt
         pkgs.package-version-server
       ];
 
