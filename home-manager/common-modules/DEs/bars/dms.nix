@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.dankMaterialShell.homeModules.dank-material-shell
   ];
   config = lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "dms") {
     programs.dankMaterialShell = {
