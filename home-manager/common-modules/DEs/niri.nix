@@ -424,26 +424,26 @@
                   "Mod+Shift+Slash".action = show-hotkey-overlay;
                   "Mod+Q".action = close-window;
                   "Mod+Shift+E".action = quit;
-                  "XF86AudioRaiseVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -i 1'';
-                  "XF86AudioLowerVolume".action = spawn-sh ''${pkgs.pamixer}/bin/pamixer -d 1'';
+                  "XF86AudioRaiseVolume".action = spawn-sh "${pkgs.pamixer}/bin/pamixer -i 1";
+                  "XF86AudioLowerVolume".action = spawn-sh "${pkgs.pamixer}/bin/pamixer -d 1";
                   "XF86AudioPlay".action = lib.mkIf (lib.elem "playerctl" vars.music) (
-                    spawn-sh ''${pkgs.playerctl}/bin/playerctl play-pause''
+                    spawn-sh "${pkgs.playerctl}/bin/playerctl play-pause"
                   );
                   "XF86AudioNext".action = lib.mkIf (lib.elem "playerctl" vars.music) (
-                    spawn-sh ''${pkgs.playerctl}/bin/playerctl next''
+                    spawn-sh "${pkgs.playerctl}/bin/playerctl next"
                   );
                   "XF86AudioPrev".action = lib.mkIf (lib.elem "playerctl" vars.music) (
-                    spawn-sh ''${pkgs.playerctl}/bin/playerctl previous''
+                    spawn-sh "${pkgs.playerctl}/bin/playerctl previous"
                   );
                 }
                 (lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "waybar") {
-                  "Mod+W".action = spawn-sh ''pkill -SIGUSR1 waybar'';
+                  "Mod+W".action = spawn-sh "pkill -SIGUSR1 waybar";
                   "Mod+D".action = spawn "fuzzel";
-                  "Mod+Ctrl+V".action = spawn-sh ''${pkgs.copyq}/bin/copyq toggle'';
+                  "Mod+Ctrl+V".action = spawn-sh "${pkgs.copyq}/bin/copyq toggle";
                 })
                 (lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "dms") {
-                  "Mod+D".action = spawn-sh ''dms ipc spotlight toggle'';
-                  "Mod+Ctrl+V".action = spawn-sh ''dms ipc clipboard toggle'';
+                  "Mod+D".action = spawn-sh "dms ipc spotlight toggle";
+                  "Mod+Ctrl+V".action = spawn-sh "dms ipc clipboard toggle";
                 })
               ];
           };
