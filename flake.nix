@@ -51,6 +51,7 @@
       url = "github:AceSLS/SLSsteam";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix&rev=daa09988bbcae9df5c929951e985adecdb06a16e";
   };
 
   outputs =

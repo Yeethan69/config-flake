@@ -4,9 +4,10 @@
   boot.kernelParams = [
     "preempt=full"
   ];
+  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
   programs.steam = {
     enable = true;
-    package = pkgs.steam.override {
+    package = pkgs.millennium-steam.override {
       extraEnv = {
         LD_AUDIT = "${inputs.sls-steam.packages.${pkgs.stdenv.hostPlatform.system}.sls-steam}/SLSsteam.so";
       };
