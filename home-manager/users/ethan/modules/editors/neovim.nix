@@ -29,7 +29,7 @@
           csharp.enable = true;
           css = {
             enable = true;
-            format.type = "prettierd";
+            format.type = [ "prettierd" ];
           };
           haskell.enable = true;
           html.enable = true;
