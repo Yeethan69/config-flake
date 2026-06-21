@@ -5,9 +5,9 @@
   pkgs.killall
   pkgs.jetbrains.jdk
   pkgs.jetbrains.rust-rover
-  pkgs.jetbrains.pycharm-professional
+  pkgs.jetbrains.pycharm
   pkgs.jetbrains.clion
-  pkgs.jetbrains.idea-ultimate
+  pkgs.jetbrains.idea
   pkgs.pavucontrol
   pkgs.font-awesome
   pkgs.nerd-fonts.dejavu-sans-mono
