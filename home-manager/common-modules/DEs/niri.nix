@@ -178,12 +178,9 @@
         services.swayidle = {
           enable = true;
           systemdTarget = "graphical-session.target";
-          events = [
-            {
-              event = "before-sleep";
-              command = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --effect-pixelate 15 --clock -f";
-            }
-          ];
+          events = {
+            before-sleep = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --effect-pixelate 15 --clock -f";
+          };
           timeouts = [
             {
               timeout = 300;
