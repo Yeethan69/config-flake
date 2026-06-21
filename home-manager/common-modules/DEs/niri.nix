@@ -34,8 +34,8 @@
         };
 
         home.packages = [
-          (pkgs.xfce.thunar.override {
-            thunarPlugins = [ pkgs.xfce.thunar-archive-plugin ];
+          (pkgs.thunar.override {
+            thunarPlugins = [ pkgs.thunar-archive-plugin ];
           })
           pkgs.xarchiver
         ];

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 [
-  pkgs.xfce.tumbler
-  pkgs.xfce.ristretto
+  pkgs.tumbler
+  pkgs.ristretto
   pkgs.killall
   pkgs.jetbrains.jdk
   pkgs.jetbrains.rust-rover
