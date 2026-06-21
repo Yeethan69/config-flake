@@ -288,6 +288,10 @@
             ]
             ++ lib.optionals (lib.attrByPath [ "DE" "bar" ] null vars == "dms") [
               { command = [ "systemctl --user restart cliphist.service" ]; }
+            ]
+            ++ lib.optionals (lib.attrByPath [ "DE" "bar" ] null vars == "vibe") [
+              { command = [ "systemctl --user restart vibepanel.service" ]; }
+              { command = [ "systemctl --user restart copyq.service" ]; }
             ];
 
             window-rules = [
@@ -444,6 +448,11 @@
                 (lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "dms") {
                   "Mod+D".action = spawn-sh "dms ipc spotlight toggle";
                   "Mod+Ctrl+V".action = spawn-sh "dms ipc clipboard toggle";
+                })
+                (lib.mkIf (lib.attrByPath [ "DE" "bar" ] null vars == "vibe") {
+                  "Mod+W".action = spawn-sh "vibepanel bar toggle";
+                  "Mod+D".action = spawn "fuzzel";
+                  "Mod+Ctrl+V".action = spawn-sh "${pkgs.copyq}/bin/copyq toggle";
                 })
               ];
           };
