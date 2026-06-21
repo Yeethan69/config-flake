@@ -152,8 +152,8 @@
           };
         };
 
-        services.swww.enable = true;
-        services.swww.package = inputs.swww.packages.${pkgs.stdenv.hostPlatform.system}.swww;
+        services.awww.enable = true;
+        services.awww.package = inputs.swww.packages.${pkgs.stdenv.hostPlatform.system}.swww;
 
         # Mako
         services.mako = {
